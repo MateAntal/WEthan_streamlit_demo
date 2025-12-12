@@ -42,7 +42,10 @@ UI refreshes immediately after deletion
 Demo Instructions
 
 To run the app use GitHub Codespaces to ensure consistency.
-Go to the GitHub repository
+Go to the GitHub repository at this link:
+
+https://github.com/MateAntal/WEthan_streamlit_demo
+
 Click Code 
 <img width="1440" height="849" alt="Screenshot 2025-12-12 at 23 13 22" src="https://github.com/user-attachments/assets/064ead5c-ca24-4e2b-95bf-ebbece3f102d" />
 
