@@ -60,17 +60,23 @@ Click Stop Alarm to stop it
 
 
 Project Structure
-.
-├── alarm.py              # Alarm class with validation, snooze, dismiss, etc.
-├── engine.py             # Connects UI with Profile & Alarms
-├── data_storage.py       # Loads and saves alarms in JSON
-├── profile.py            # Holds user alarms
-├── quicksort.py          # Custom quicksort for priority sorting
-├── search.py             # Simple linear search for alarm labels
-├── streamlit_app.py      # Main Streamlit UI
-├── voices/               # Uploaded audio files
-└── data/
-    └── demo_user.json    # Stored alarms
+ alarm.py              # Alarm class with validation, snooze, dismiss, etc.
+
+engine.py             # Connects UI with Profile & Alarms
+
+data_storage.py       # Loads and saves alarms in JSON
+
+profile.py            # Holds user alarms
+
+quicksort.py          # Custom quicksort for priority sorting
+
+search.py             # Simple linear search for alarm labels
+
+streamlit_app.py      # Main Streamlit UI
+
+voices/               # Uploaded audio files
+
+data/demo_user.json    # Stored alarms
 
 
 
