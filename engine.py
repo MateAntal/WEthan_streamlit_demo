@@ -2,6 +2,7 @@ from datetime import datetime
 from alarm import Alarm
 from profile import Profile
 
+from quicksort import quicksort
 
 class Engine:
     """Thin layer between the UI (Streamlit) and the Profile/Alarms."""
@@ -11,7 +12,7 @@ class Engine:
 
     # -------- ALARMS -------- #
 
-    def add_alarm(self, time, voice_file_path, repeat, label):
+    def add_alarm(self, time, voice_file_path, repeat, label, priority=3):
         alarm = Alarm(
             time=time,
             voice_file_path=voice_file_path,
@@ -23,7 +24,9 @@ class Engine:
         return alarm
 
     def get_alarms(self):
-        return self.profile.alarms
+        return quicksort(self.profile.alarms)
+
+
 
     def save(self):
         self.profile.save()
