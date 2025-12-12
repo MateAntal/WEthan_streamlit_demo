@@ -1,9 +1,12 @@
 # search.py
 
-def simplesearch(tasks, item):
-    """Linear search for a title inside a list of task titles."""
-    item = item.lower()
-    for i in range(len(tasks)):
-        if tasks[i].lower() == item:
+def simplesearch(alarms, query):
+    """
+    simple search for an alarm label inside a list of Alarm objects.
+    Returns the index if found, otherwise None.
+    """
+    query = query.lower()
+    for i in range(len(alarms)):
+        if alarms[i].label.lower() == query:
             return i
     return None

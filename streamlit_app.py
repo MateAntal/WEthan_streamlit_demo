@@ -58,3 +58,25 @@ if len(alarms) == 0:
 else:
     for a in alarms:
         st.write(f"**{a.label}** – {a.time} – Repeat: {a.repeat} – Priority: {a.priority}")
+
+# ------------------------------
+# SEARCH ALARMS
+# ------------------------------
+st.header("Search Alarms")
+
+search_query = st.text_input("Search by label")
+
+if st.button("Search"):
+    from search import simplesearch
+
+    alarms_sorted = engine.get_alarms()  # already sorted list
+    index = simplesearch(alarms_sorted, search_query)
+
+    if index is None:
+        st.warning("No alarm found with that label.")
+    else:
+        a = alarms_sorted[index]
+        st.success(f"Found alarm: **{a.label}**")
+        st.write(f"Time: {a.time}")
+        st.write(f"Repeat: {a.repeat}")
+        st.write(f"Priority: {a.priority}")
