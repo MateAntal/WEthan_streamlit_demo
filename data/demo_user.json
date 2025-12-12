@@ -1,0 +1,11 @@
+{
+  "alarms": [
+    {
+      "time": "2025-12-12T02:00:00",
+      "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
+      "repeat": "none",
+      "label": "Gym",
+      "active": true
+    }
+  ]
+}
