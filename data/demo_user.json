@@ -5,7 +5,7 @@
       "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
       "repeat": "none",
       "label": "Gym",
-      "active": true,
+      "active": false,
       "priority": 3
     },
     {
@@ -13,7 +13,7 @@
       "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
       "repeat": "daily",
       "label": "Gym ",
-      "active": true,
+      "active": false,
       "priority": 3
     },
     {
@@ -21,7 +21,7 @@
       "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
       "repeat": "daily",
       "label": "Work on project",
-      "active": true,
+      "active": false,
       "priority": 3
     },
     {
@@ -29,7 +29,7 @@
       "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
       "repeat": "none",
       "label": "testing",
-      "active": true,
+      "active": false,
       "priority": 5
     },
     {
@@ -37,7 +37,7 @@
       "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
       "repeat": "daily",
       "label": "wake up",
-      "active": true,
+      "active": false,
       "priority": 5
     }
   ]

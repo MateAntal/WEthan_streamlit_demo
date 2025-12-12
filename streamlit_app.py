@@ -11,36 +11,59 @@ if "engine" not in st.session_state:
 
 engine = st.session_state.engine
 
-alarm_audio_placeholder = st.empty()
-
 
 # ------------------------------
 # ADD ALARM
 # ------------------------------
+st.header("Add Alarm")
+
+label = st.text_input("Alarm Label")
+time_input = st.time_input("Alarm Time")
+repeat = st.selectbox("Repeat", ["none", "daily", "weekdays"])
+priority = st.selectbox("Priority", [5, 4, 3, 2, 1], index=2)
+
+uploaded_voice = st.file_uploader(
+    "Upload a voice file", type=["mp3", "wav", "m4a", "aac", "ogg"]
+)
+
+if st.button("Create Alarm"):
+    if not uploaded_voice:
+        st.error("Please upload a voice file.")
+    elif not label:
+        st.error("Please enter a label for the alarm.")
+    else:
+        os.makedirs("voices", exist_ok=True)
+        voice_path = os.path.join("voices", uploaded_voice.name)
+
+        with open(voice_path, "wb") as f:
+            f.write(uploaded_voice.getbuffer())
+
+        alarm_time = datetime.combine(date.today(), time_input)
+
+        engine.add_alarm(alarm_time, voice_path, repeat, label, priority)
+        engine.save()
+        st.success("Alarm created and saved!")
+
+
+# ------------------------------
+# CHECK FOR RINGING ALARMS
+# ------------------------------
 st.header("Current Alarms")
+
 alarms = engine.get_alarms()
-
-# Placeholder for audio playback
 alarm_audio_placeholder = st.empty()
-
-from datetime import datetime
 now = datetime.now()
 
-# Flag to detect if something is ringing
 ringing_alarm = None
-
 for a in alarms:
     if a.active and now >= a.time:
         ringing_alarm = a
-        break  # only ring the first eligible alarm
+        break
 
-# If an alarm is ringing, handle it
 if ringing_alarm:
     a = ringing_alarm
-
     st.error(f"⏰ Alarm ringing: {a.label}!")
 
-    # Play the alarm sound
     alarm_audio_placeholder.markdown(
         f"""
         <audio autoplay>
@@ -50,46 +73,16 @@ if ringing_alarm:
         unsafe_allow_html=True
     )
 
-    # STOP ALARM BUTTON
     if st.button("Stop Alarm"):
         a.active = False
         engine.save()
         st.success("Alarm stopped.")
-        st.experimental_rerun()  # refresh UI immediately
+        st.experimental_rerun()
 
 
 # ------------------------------
-# VIEW CURRENT ALARMS
+# DISPLAY ALARMS
 # ------------------------------
-st.header("Current Alarms")
-alarms = engine.get_alarms()
-
-# Placeholder for audio playback
-alarm_audio_placeholder = st.empty()
-
-# Check if any alarm should ring
-from datetime import datetime
-now = datetime.now()
-
-for a in alarms:
-    if a.active and now >= a.time:
-        st.error(f"⏰ Alarm ringing: {a.label}!")
-
-        # Play the alarm sound automatically
-        alarm_audio_placeholder.markdown(
-            f"""
-            <audio autoplay>
-                <source src="{a.voice_file_path}" type="audio/mpeg">
-            </audio>
-            """,
-            unsafe_allow_html=True
-        )
-
-        # Disable after ringing so it does not ring again
-        a.active = False
-        engine.save()
-
-# After ringing logic display alarms
 if len(alarms) == 0:
     st.info("No alarms saved yet.")
 else:
@@ -109,7 +102,7 @@ search_query = st.text_input("Search by label")
 if st.button("Search"):
     from search import simplesearch
 
-    alarms_sorted = engine.get_alarms()  # already sorted list
+    alarms_sorted = engine.get_alarms()
     index = simplesearch(alarms_sorted, search_query)
 
     if index is None:
