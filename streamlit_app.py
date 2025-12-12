@@ -20,6 +20,13 @@ label = st.text_input("Alarm Label")
 time_input = st.time_input("Alarm Time")
 repeat = st.selectbox("Repeat", ["none", "daily", "weekdays"])
 
+priority = st.selectbox(
+    "Priority",
+    [5, 4, 3, 2, 1],
+    index=2,  # default = 3
+    help="5 = highest priority, 1 = lowest",
+)
+
 uploaded_voice = st.file_uploader(
     "Upload a voice file", type=["mp3", "wav", "m4a", "aac", "ogg"]
 )
@@ -37,7 +44,7 @@ if st.button("Create Alarm"):
             f.write(uploaded_voice.getbuffer())
 
         alarm_time = datetime.combine(date.today(), time_input)
-        engine.add_alarm(alarm_time, voice_path, repeat, label)
+        engine.add_alarm(alarm_time, voice_path, repeat, label, priority)
         st.success("Alarm created and saved!")
 
 # ------------------------------
@@ -50,4 +57,4 @@ if len(alarms) == 0:
     st.info("No alarms saved yet.")
 else:
     for a in alarms:
-        st.write(f"**{a.label}** – {a.time} – Repeat: {a.repeat}")
+        st.write(f"**{a.label}** – {a.time} – Repeat: {a.repeat} – Priority: {a.priority}")

@@ -6,6 +6,20 @@
       "repeat": "none",
       "label": "Gym",
       "active": true
+    },
+    {
+      "time": "2025-12-12T11:15:00",
+      "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
+      "repeat": "daily",
+      "label": "Gym ",
+      "active": true
+    },
+    {
+      "time": "2025-12-12T07:00:00",
+      "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
+      "repeat": "daily",
+      "label": "Work on project",
+      "active": true
     }
   ]
 }

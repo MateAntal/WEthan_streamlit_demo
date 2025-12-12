@@ -14,6 +14,7 @@ def _serialize_alarm(a):
         "repeat": a.repeat,
         "label": a.label,
         "active": a.active,
+        "priority": a.priority,
     }
 
 
@@ -24,6 +25,7 @@ def _deserialize_alarm(d, AlarmClass):
         voice_file_path=d["voice_file_path"],
         repeat=d["repeat"],
         label=d["label"],
+        priority=d.get("priority", 3),
     )
     a.active = d.get("active", True)
     return a

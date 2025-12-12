@@ -10,7 +10,7 @@ ALLOWED_AUDIO_EXTS = {".mp3", ".wav", ".m4a", ".aac", ".ogg"}
 
 
 class Alarm:
-    def __init__(self, time, voice_file_path, repeat, label):
+    def __init__(self, time, voice_file_path, repeat, label, priority=3):
         """
         Create a new Alarm.
         - time: datetime object for when the alarm should ring
@@ -23,6 +23,7 @@ class Alarm:
         self.repeat = repeat                  # "none", "daily", "weekdays"
         self.label = label                    # small text to describe it
         self.active = True                    # alarm starts active
+        self.priority = priority
 
         # Validate the voice file path + extension
         self._validate_voice_file(self.voice_file_path)
@@ -42,10 +43,6 @@ class Alarm:
         print(f"[VOICE] Alarm '{self.label}' voice set to: {self.voice_file_path}")
 
     def play_voice(self):
-        """
-        Try to open the audio file with the system's default player.
-        (Works on a local machine; in Streamlit deployment this may be ignored.)
-        """
         uri = pathlib.Path(self.voice_file_path).resolve().as_uri()
         webbrowser.open(uri)
 
@@ -56,6 +53,7 @@ class Alarm:
         print(f" Voice file: {self.voice_file_path}")
         print(f" Repeat: {self.repeat}")
         print(f" Active: {self.active}")
+        print(f" Priority: {self.priority}")
         print()
 
     def snooze(self, minutes):

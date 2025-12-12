@@ -17,6 +17,7 @@ class Engine:
             voice_file_path=voice_file_path,
             repeat=repeat,
             label=label,
+            priority=priority,
         )
         self.profile.add_alarm(alarm)
         return alarm
