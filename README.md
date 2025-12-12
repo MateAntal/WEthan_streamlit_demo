@@ -44,12 +44,17 @@ Demo Instructions
 To run the app use GitHub Codespaces to ensure consistency.
 Go to the GitHub repository
 Click Code 
+<img width="1440" height="849" alt="Screenshot 2025-12-12 at 23 13 22" src="https://github.com/user-attachments/assets/064ead5c-ca24-4e2b-95bf-ebbece3f102d" />
 
 Codespaces - Create Codespace
+<img width="1440" height="849" alt="Screenshot 2025-12-12 at 23 15 41" src="https://github.com/user-attachments/assets/fc5b1d53-6a80-41f5-9bf3-991d1f932348" />
+
 
 This may take some time, refresh if the process is not executed properly. 
 In the Codespace terminal, run:
 streamlit run streamlit_app.py
+<img width="1014" height="344" alt="Screenshot 2025-12-12 at 23 33 12" src="https://github.com/user-attachments/assets/37de2b93-105a-4e18-8d2c-d759953718e3" />
+
 	
 The app will open in the Codespaces browser, you have to allow this
 Please enjoy the demo for example you can try with this task
