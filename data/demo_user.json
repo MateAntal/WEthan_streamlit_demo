@@ -39,6 +39,14 @@
       "label": "wake up",
       "active": false,
       "priority": 5
+    },
+    {
+      "time": "2025-12-12T20:15:00",
+      "voice_file_path": "voices/IE University - Segovia Campus 2.m4a",
+      "repeat": "none",
+      "label": "Testing02",
+      "active": true,
+      "priority": 3
     }
   ]
 }
