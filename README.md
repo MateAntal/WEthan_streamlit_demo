@@ -1,7 +1,9 @@
 WEthan – Smart Alarm Demo
+
 A lightweight, educational prototype demonstrating data structures, file handling, sorting algorithms, search techniques, and real-time interaction using Streamlit.
 
 Overview
+
 WEthan is a smart alarm demo application built as part of a data structures and algorithms project.
 It showcases:
 Creating, storing, and managing alarms
@@ -11,6 +13,7 @@ JSON-based storage
 A clean, interactive Streamlit UI
 
 Features
+
 Create Alarms using OOP:
 Attributes for alarm label, time, repeat mode, priority, and a custom audio file for the alarm sound.
 We decided to store alarms in lists because
@@ -36,7 +39,8 @@ Each alarm has a delete button to remove the alarm from the list.
 UI refreshes immediately after deletion
 
 
-Demo Instructions 
+Demo Instructions
+
 To run the app use GitHub Codespaces to ensure consistency.
 Go to the GitHub repository
 Click Code 
